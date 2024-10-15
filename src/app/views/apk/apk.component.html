@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Lista de Aplicaciones</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="irALaLista()">
+        <ion-icon name="list-outline"></ion-icon> <!-- Icono para el botón -->
+        Tutorial descarga
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding content-background">
+  <div class="dynamic-background"></div>
+  <!-- Mostrar APKs -->
+  <ion-list *ngIf="apks.length > 0">
+    <ion-item *ngFor="let apk of apks"
+              class="fade-in"
+              lines="none"
+              style="border-radius: 10px; margin-bottom: 15px;">
+      <ion-thumbnail slot="start" *ngIf="apk.imagenUrl">
+        <img [src]="apk.imagenUrl" alt="{{ apk.nombre }}" />
+      </ion-thumbnail>
+
+      <ion-label class="ion-text-wrap">
+        <h2>{{ apk.nombre }}</h2>
+        <p>{{ apk.descripcion }}</p>
+      </ion-label>
+
+      <ion-button fill="outline" color="success"
+                  (click)="apk.enlaceDescarga ? handleOpenLink(apk.enlaceDescarga) : handleEnter(apk.apkUrl)">
+        <ion-icon slot="start" name="download-outline"></ion-icon>
+        {{ apk.enlaceDescarga ? 'Abrir enlace' : 'Descargar' }}
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-text *ngIf="apks.length === 0" color="medium" class="ion-text-center">No hay APKs subidos.</ion-text>
+</ion-content>

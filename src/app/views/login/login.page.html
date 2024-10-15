@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">SYR-SERVICIOS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+
+ <div class="logo-container">
+    <ion-img src="../../../assets/icon/921f7e33-73ae-41a2-a7fd-1624202c99d5-removebg-preview.png" alt="Logo"></ion-img>
+  </div>
+
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <ion-item>
+      <ion-label position="floating" >DNI</ion-label>
+      <ion-input formControlName="dni" type="text" tabindex="1"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">CONTRASEÑA</ion-label>
+      <ion-input formControlName="password" type="password" tabindex="2"></ion-input>
+    </ion-item>
+
+    <br>
+    <ion-button type="submit" expand="block" [disabled]="!loginForm.valid" tabindex="3">Iniciar Sesión</ion-button>
+
+    <br>
+
+ <!-- Botón que muestra el mensaje en lugar de redirigir -->
+    <ion-button expand="block" (click)="showForgotPasswordMessage()" tabindex="4">
+      Olvidé Mi Contraseña
+    </ion-button>
+
+  </form>
+
+
+
+     <!-- Mensaje emergente personalizado -->
+  <div *ngIf="showMessage" class="custom-alert">
+    <p>Comuníquese al siguiente número para recuperar su contraseña: <strong>5491132111571</strong></p>
+    <ion-button (click)="closeForgotPasswordMessage()">Cerrar</ion-button>
+  </div>
+
+</ion-content>

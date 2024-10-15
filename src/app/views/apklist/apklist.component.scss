@@ -1,0 +1,43 @@
+.content-background {
+  background-color: #f0f0f0; /* Color de fondo suave */
+}
+
+.video-list {
+  margin: 20px; /* Margen alrededor de la lista de videos */
+}
+
+.video-item {
+  border: 1px solid #ccc; /* Bordes ligeros */
+  border-radius: 10px; /* Bordes redondeados */
+  padding: 15px; /* Espaciado interno */
+  background-color: white; /* Fondo blanco para cada video */
+  transition: transform 0.2s; /* Efecto de transición */
+}
+
+.video-item:hover {
+  transform: scale(1.02); /* Efecto de aumento al pasar el mouse */
+}
+
+.video-title {
+  font-size: 1.5em; /* Título más grande */
+  font-weight: bold; /* Negrita */
+  margin-bottom: 10px; /* Espacio debajo del título */
+  text-align: center;
+}
+
+.video-description {
+  font-size: 1.1em; /* Tamaño de fuente para la descripción */
+  margin-bottom: 10px; /* Espacio debajo de la descripción */
+  text-align: center;
+}
+
+.video-thumbnail {
+  max-width: 100%; /* Asegurarse de que la imagen no exceda el ancho */
+  border-radius: 8px; /* Bordes redondeados para la imagen */
+}
+
+.video-player {
+  width: 100%; /* Ancho completo para el reproductor de video */
+  border-radius: 8px; /* Bordes redondeados para el reproductor */
+  margin-top: 10px; /* Espacio superior para separar de la imagen */
+}

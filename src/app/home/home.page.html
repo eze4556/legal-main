@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title style="text-align: center;">Bienvenido</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()" fill="clear" class="logout-button">
+        <ion-icon name="log-out-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+
+
+
+  <div style="margin: 20px;">
+    <ion-button tabindex="1" (click)="irACategorias()" expand="block" shape="round" color="primary" style="font-size: 24px; padding: 20px;">
+      Ver Videos
+    </ion-button>
+  </div>
+
+
+  <div style="margin: 20px;">
+    <ion-button tabindex="2"  (click)="irApk()" expand="block" shape="round" color="primary" style="font-size: 24px; padding: 20px;">
+      Ver Aplicaciones
+    </ion-button>
+  </div>
+
+
+<!-- hola -->
+
+
+
+
+
+  <div *ngIf="cargando" style="text-align: center;">
+    <ion-spinner name="bubbles"></ion-spinner>
+  </div>
+
+</ion-content>
