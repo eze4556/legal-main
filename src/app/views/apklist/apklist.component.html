@@ -17,18 +17,24 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding content-background">
-  <!-- Mostrar Videos -->
+<ion-content class="ion-padding content-background" scroll-y="true">
   <ion-list class="video-list" *ngIf="videos.length > 0">
-    <ion-item *ngFor="let video of videos" class="video-item">
+    <ion-item
+      *ngFor="let video of videos; let i = index"
+      class="video-item"
+      tabindex="0"
+      (focus)="onFocus(i)"
+      (blur)="onBlur(i)"
+      (keyup.enter)="playVideo(video.videoUrl)">
       <ion-label>
         <h2 class="video-title">{{ video.nombre }}</h2>
         <p class="video-description">{{ video.descripcion }}</p>
-        <!-- <img *ngIf="video.imagenUrl" [src]="video.imagenUrl" alt="{{ video.nombre }}" class="video-thumbnail"/> -->
         <video *ngIf="video.videoUrl" [src]="video.videoUrl" controls class="video-player"></video>
       </ion-label>
     </ion-item>
   </ion-list>
 
-  <ion-text *ngIf="videos.length === 0" color="medium" style="text-align: center; display: block;">No hay videos subidos.</ion-text>
+  <ion-text *ngIf="videos.length === 0" color="medium" style="text-align: center; display: block;">
+    No hay videos subidos.
+  </ion-text>
 </ion-content>

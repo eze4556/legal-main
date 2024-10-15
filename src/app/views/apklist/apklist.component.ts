@@ -51,7 +51,7 @@ export class ApkListComponent implements OnInit {
   }
 
    irALaLista() {
-  this.router.navigate(['/aplicaciones']); 
+  this.router.navigate(['/aplicaciones']);
 }
 
   async cargarVideos() {
@@ -129,4 +129,78 @@ export class ApkListComponent implements OnInit {
     });
     toast.present();
   }
+
+
+
+  playVideo(videoUrl: string) {
+  const videoElement = document.createElement('video');
+
+  // Configurar el elemento de video
+  videoElement.src = videoUrl;
+  videoElement.controls = true;
+  videoElement.style.width = '100%';
+  videoElement.style.height = '100%';
+  videoElement.style.position = 'fixed';
+  videoElement.style.top = '0';
+  videoElement.style.left = '0';
+  videoElement.style.zIndex = '9999';
+  videoElement.autoplay = true;
+
+  // Agregar el video al cuerpo del documento
+  document.body.appendChild(videoElement);
+
+  // Solicitar pantalla completa
+  if (videoElement.requestFullscreen) {
+    videoElement.requestFullscreen();
+  } else if ((videoElement as any).webkitRequestFullscreen) { /* Safari */
+    (videoElement as any).webkitRequestFullscreen();
+  } else if ((videoElement as any).msRequestFullscreen) { /* IE11 */
+    (videoElement as any).msRequestFullscreen();
+  }
+
+  // Escuchar cuando el video termina o se cierra el fullscreen
+  videoElement.onended = () => {
+    this.exitFullscreen(videoElement);
+  };
+
+  // Permitir salir del video con el control remoto o escape
+  document.addEventListener('keydown', (event: KeyboardEvent) => {
+    if (event.key === 'Escape') {
+      this.exitFullscreen(videoElement);
+    }
+  });
+}
+
+exitFullscreen(videoElement: HTMLVideoElement) {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if ((document as any).webkitExitFullscreen) { /* Safari */
+    (document as any).webkitExitFullscreen();
+  } else if ((document as any).msExitFullscreen) { /* IE11 */
+    (document as any).msExitFullscreen();
+  }
+
+  // Remover el video del DOM después de salir del modo fullscreen
+  if (videoElement) {
+    videoElement.pause();
+    videoElement.src = '';
+    videoElement.remove();
+  }
+}
+
+
+ // Función para manejar el enfoque del video
+  onFocus(index: number) {
+    const videoItem = document.querySelectorAll('.video-item')[index] as HTMLElement;
+    videoItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    videoItem.classList.add('focused'); // Añadir clase para efectos adicionales
+  }
+
+  // Función para manejar el desenfoque del video
+  onBlur(index: number) {
+    const videoItem = document.querySelectorAll('.video-item')[index] as HTMLElement;
+    videoItem.classList.remove('focused'); // Remover clase cuando se pierde el enfoque
+  }
+
+
 }

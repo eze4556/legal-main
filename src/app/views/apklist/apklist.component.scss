@@ -3,16 +3,24 @@
 }
 
 .video-list {
-  margin: 20px; /* Margen alrededor de la lista de videos */
+  max-height: 100vh; /* Altura máxima para permitir desplazamiento */
+  overflow-y: auto; /* Habilita desplazamiento vertical */
 }
 
 .video-item {
-  border: 1px solid #ccc; /* Bordes ligeros */
-  border-radius: 10px; /* Bordes redondeados */
-  padding: 15px; /* Espaciado interno */
-  background-color: white; /* Fondo blanco para cada video */
-  transition: transform 0.2s; /* Efecto de transición */
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  background-color: white;
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+   margin: 10px auto 0; /* Centra el video y agrega margen superior */
+  object-fit: cover;
+  align-items: center; /* Centra el contenido horizontalmente */
+  text-align: center; /* Centra el texto y otros elementos */
 }
+
 
 .video-item:hover {
   transform: scale(1.02); /* Efecto de aumento al pasar el mouse */
@@ -37,7 +45,23 @@
 }
 
 .video-player {
-  width: 100%; /* Ancho completo para el reproductor de video */
+  width: 100%; /* Ocupa el ancho completo del contenedor */
+  height: 200px; /* Altura fija para estandarizar el tamaño */
+  max-width: 600px; /* Tamaño máximo para el ancho */
   border-radius: 8px; /* Bordes redondeados para el reproductor */
   margin-top: 10px; /* Espacio superior para separar de la imagen */
+  object-fit: cover; /* Ajusta el contenido del video para llenar el espacio */
+   margin: 10px auto 0; /* Centra el video y agrega margen superior */
+  object-fit: cover;
 }
+
+
+.video-item:focus {
+  outline: none; /* Quita el borde predeterminado de foco */
+  transform: scale(1.05); /* Efecto de ampliación */
+  border: 2px solid #ffd700; /* Bordes resaltados */
+  background-color: #333; /* Fondo oscuro al seleccionar */
+  color: #fff;
+}
+
+
