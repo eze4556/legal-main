@@ -17,8 +17,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding content-background" scroll-y="true">
-  <ion-list class="video-list" *ngIf="videos.length > 0">
+<ion-content class="ion-padding content-background" scroll-y="false">
+  <div class="video-carousel">
     <ion-item
       *ngFor="let video of videos; let i = index"
       class="video-item"
@@ -32,9 +32,10 @@
         <video *ngIf="video.videoUrl" [src]="video.videoUrl" controls class="video-player"></video>
       </ion-label>
     </ion-item>
-  </ion-list>
+  </div>
 
   <ion-text *ngIf="videos.length === 0" color="medium" style="text-align: center; display: block;">
     No hay videos subidos.
   </ion-text>
 </ion-content>
+

@@ -1,13 +1,15 @@
-.content-background {
-  background-color: #f0f0f0; /* Color de fondo suave */
-}
-
-.video-list {
-  max-height: 100vh; /* Altura máxima para permitir desplazamiento */
-  overflow-y: auto; /* Habilita desplazamiento vertical */
+.video-carousel {
+  display: flex;
+  overflow-x: auto; /* Habilita el desplazamiento horizontal */
+  -webkit-overflow-scrolling: touch; /* Mejora el desplazamiento en dispositivos táctiles */
+  padding: 10px 0; /* Espacio alrededor del carrusel */
 }
 
 .video-item {
+  flex: 0 0 auto; /* Evita que los elementos se compriman */
+  width: 80%; /* Ancho de cada elemento, puedes ajustar según tus necesidades */
+  max-width: 300px; /* Tamaño máximo opcional */
+  margin-right: 10px; /* Espacio entre los elementos */
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 15px;
@@ -15,53 +17,21 @@
   transition: transform 0.2s;
   display: flex;
   flex-direction: column;
-   margin: 10px auto 0; /* Centra el video y agrega margen superior */
-  object-fit: cover;
-  align-items: center; /* Centra el contenido horizontalmente */
-  text-align: center; /* Centra el texto y otros elementos */
-}
-
-
-.video-item:hover {
-  transform: scale(1.02); /* Efecto de aumento al pasar el mouse */
-}
-
-.video-title {
-  font-size: 1.5em; /* Título más grande */
-  font-weight: bold; /* Negrita */
-  margin-bottom: 10px; /* Espacio debajo del título */
+  align-items: center;
   text-align: center;
 }
-
-.video-description {
-  font-size: 1.1em; /* Tamaño de fuente para la descripción */
-  margin-bottom: 10px; /* Espacio debajo de la descripción */
-  text-align: center;
-}
-
-.video-thumbnail {
-  max-width: 100%; /* Asegurarse de que la imagen no exceda el ancho */
-  border-radius: 8px; /* Bordes redondeados para la imagen */
-}
-
-.video-player {
-  width: 100%; /* Ocupa el ancho completo del contenedor */
-  height: 200px; /* Altura fija para estandarizar el tamaño */
-  max-width: 600px; /* Tamaño máximo para el ancho */
-  border-radius: 8px; /* Bordes redondeados para el reproductor */
-  margin-top: 10px; /* Espacio superior para separar de la imagen */
-  object-fit: cover; /* Ajusta el contenido del video para llenar el espacio */
-   margin: 10px auto 0; /* Centra el video y agrega margen superior */
-  object-fit: cover;
-}
-
 
 .video-item:focus {
-  outline: none; /* Quita el borde predeterminado de foco */
-  transform: scale(1.05); /* Efecto de ampliación */
-  border: 2px solid #ffd700; /* Bordes resaltados */
-  background-color: #333; /* Fondo oscuro al seleccionar */
+  outline: none;
+  transform: scale(1.05);
+  border: 2px solid #ffd700;
+  background-color: #333;
   color: #fff;
 }
 
-
+.video-player {
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+  object-fit: cover;
+}
